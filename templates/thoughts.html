@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if session.get('language', 'en') == 'zh' %}
+    思考
+{% else %}
+    Thoughts
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="thoughts">
+        <h1>
+            {% if session.get('language', 'en') == 'zh' %}
+                思考
+            {% else %}
+                Thoughts
+            {% endif %}
+        </h1>
+        
+        <div class="thought-item">
+            <div class="thought-title-box" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5em;">
+                <span style="font-size: 1.1em;">
+                {% if session.get('language', 'en') == 'zh' %}
+                    思考 1: self-advocate
+                {% else %}
+                    Thought 1: self-advocate
+                {% endif %}
+                </span>
+                <a href="#" class="thought-expand" data-target="thought1-content" style="font-size: 0.8em; color: #888; text-decoration: underline; margin-left: 1em;">expand</a>
+            </div>
+            <div id="thought1-content" class="thought-content" style="display: none;">
+                <p>
+                    {% if session.get('language', 'en') == 'zh' %}
+核心：形成由内向外的自信。<br><br>
+2024年底一位塔罗牌老奶奶告诉我：想创业的你翻出了三张牌，其中这一张牌是现在就可以做的。This symbol tells you that you need to be your self-advocate.<br><br>
+我当时其实不太懂，不就是positive self talk吗？这两天读了一本关于费德勒的书，我才真正感受到了self-advocate这个词组的厚度。<br><br>
+费德勒说过想要赢得大满贯，你必须要相信自己，打出侵略性，身体里的每一个细胞都要100%对自己获胜坚信不疑。我在比赛的时候几乎不会有这种想法，往往也没有斗志去拼搏（正确归因非常难，而我认为在关键时刻真的缺少最重要的自信）。结果是我输了很多本来应该能拿下的比赛。<br><br>
+拿下为数不多的比赛时，我的心理有一个共同点：我坚信着自己会赢。这种信念会让我hyper集中，以至于场上的来球仿佛都变慢了。与此同时我的头脑更加清醒，战术执行更加果断。仿佛打压式教育的痕迹蒸发了，我再也听不见大家对我的judgement，我撇开一切干扰，感觉真的很好，仿佛进入了无人之境。这种感觉就像沉浸在贝多芬的交响乐里，随着河流的laminar flow奔向下游一般美妙。<br><br>
+可能这就是心流，让我无旁骛，不由自主地被拉着冲向终局。在心流里我无法不当自己的self-advocate，因为在心流里的我充满了自信，我对能够达成目标充满了决心和为此一定要拼搏到底的斗志。在心流里，我不会告诉自己要努力尝试，我会告诉自己我能赢。<br><br>
+做self-advocate，要从拥抱心流开始。心流是自己创造的laminar flow。
+                    {% else %}
+This article was originally written in Chinese. The following is a generative AI translation for reference.<br><br>
+Core: Building confidence from the inside out.<br><br>
+At the end of 2024, a tarot-reading old lady told me: As someone who wants to start a business, you drew three cards, and this card is something you can act on right now. This symbol tells you that you need to be your self-advocate.<br><br>
+At the time, I didn't really understand. Isn't it just positive self-talk? But after reading a book about Federer recently, I finally felt the depth of the phrase self-advocate.<br><br>
+Federer once said that to win a Grand Slam, you must believe in yourself, play aggressively, and every cell in your body must be 100% convinced you will win. When I compete, I rarely have this mindset, and often lack the fighting spirit to strive (correct attribution is very difficult, and I think I really lack the most important confidence at critical moments). As a result, I lost many matches I should have won.<br><br>
+When I did win a few matches, my mindset had one thing in common: I firmly believed I would win. This belief made me hyper-focused, and the incoming balls on the court seemed to slow down. At the same time, my mind became clearer and my tactics more decisive. It was as if the marks of suppressive education evaporated, I could no longer hear everyone's judgment, I set aside all distractions, and it felt really good, as if I had entered a state of no one else. This feeling is as wonderful as being immersed in Beethoven's symphony, flowing downstream with the river's laminar flow.<br><br>
+Maybe this is flow, letting me be undisturbed and involuntarily pulled toward the end. In flow, I can't help but be my own self-advocate, because in flow I am full of confidence, determination to achieve my goals, and the fighting spirit to go all out. In flow, I don't tell myself to try hard, I tell myself I can win.<br><br>
+To be a self-advocate, start by embracing flow. Flow is a laminar flow you create for yourself.
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+        <div class="thought-item">
+            <div class="thought-title-box" style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.5em;">
+                <span style="font-size: 1.1em;">
+                {% if session.get('language', 'en') == 'zh' %}
+                    思考 2: Laminar Flow
+                {% else %}
+                    Thought 2: Laminar Flow
+                {% endif %}
+                </span>
+                <a href="#" class="thought-expand" data-target="thought2-content" style="font-size: 0.8em; color: #888; text-decoration: underline; margin-left: 1em;">expand</a>
+            </div>
+            <div id="thought2-content" class="thought-content" style="display: none;">
+                <p>
+                    {% if session.get('language', 'en') == 'zh' %}
+之前发现心流是自己的创造的laminar flow。作为一个基础的understanding，实践起来必然非常困难。自我诊断有ADD之后，我就特别容易注意到内心turbulent flow的状态。<br><br>
+Flow的性质是上是思考的杂乱程度定义的。Turbulent flow的表现形式在于脑海里一团乱麻，剪不断，理还乱；Laminar flow则是分层而且调理清晰的，这种状态下的深度思考和专注只是附加产品。毕竟turbulent flow叫做乱流/湍流，而laminar flow叫做层流/片流。流体力学原理告诉我们，从turbulent flow过渡到laminar flow最简单直观的方法是：降低流速。<br><br>
+在手机绑架每个人注意力的时代，因为思维被无限加快，甚至超过了我们能够有条理地思考的临界流速，所以turbulent flow是常态。而在思维上从turbulent➡️laminar的方法其实和物理世界相差无几：让思考（流速）慢下来。<br><br>
+无论是自己用10分钟记录一个spontaneous的想法，还是看10页书，思考速度降低，就能有效地提高思维的清晰度和条理性。
+                    {% else %}
+This article was originally written in Chinese. The following is a generative AI translation for reference.<br><br>
+I previously discovered that flow is a laminar flow you create for yourself. As a basic understanding, it's inevitably very difficult to practice. After self-diagnosing with ADD, I became especially aware of the turbulent flow state inside myself.<br><br>
+The nature of flow is defined by the degree of chaos in your thoughts. Turbulent flow manifests as a tangled mess in your mind, impossible to cut or untangle; laminar flow is layered and clear, and in this state, deep thinking and focus are just byproducts. After all, turbulent flow means chaos, while laminar flow means order. Fluid mechanics tells us that the simplest and most intuitive way to transition from turbulent to laminar flow is to slow down the flow speed.<br><br>
+In an era where everyone's attention is hijacked by smartphones, our thinking is infinitely accelerated, even beyond the critical speed at which we can think clearly, so turbulent flow is the norm. The way to go from turbulent to laminar in thinking is actually not much different from the physical world: slow your thinking (flow speed) down.<br><br>
+Whether it's spending 10 minutes recording a spontaneous thought or reading 10 pages of a book, slowing down your thinking speed can effectively improve the clarity and orderliness of your thoughts.
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    </section>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.thought-expand').forEach(function(link) {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            var target = document.getElementById(link.getAttribute('data-target'));
+            if (target.style.display === 'none') {
+                target.style.display = 'block';
+                link.textContent = 'collapse';
+            } else {
+                target.style.display = 'none';
+                link.textContent = 'expand';
+            }
+        });
+    });
+});
+</script>
+{% endblock %} 

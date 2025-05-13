@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if session.get('language', 'en') == 'zh' %}
+    研究
+{% else %}
+    Research
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="research">
+        <h1>
+            {% if session.get('language', 'en') == 'zh' %}
+                研究项目
+            {% else %}
+                Research Projects
+            {% endif %}
+        </h1>
+        
+        <div class="research-item">
+            <div class="research-title-box" style="display: flex; align-items: center; margin-bottom: 0.5em;">
+                <span style="font-size: 1.1em;">
+                {% if session.get('language', 'en') == 'zh' %}
+                    市场地图 1: 电池回收
+                {% else %}
+                    Market Map 1: Battery Recycling
+                {% endif %}
+                </span>
+            </div>
+            <p>
+                {% if session.get('language', 'en') == 'zh' %}
+                    这份市场地图探讨了电池回收行业，分析了主要参与者、技术趋势和未来增长机会。随着电动汽车和可再生能源存储的快速发展，电池回收变得至关重要。
+                {% else %}
+                    This market map explores the battery recycling industry, analyzing key players, technological trends, and future growth opportunities. As electric vehicles and renewable energy storage rapidly expand, battery recycling has become increasingly critical.
+                {% endif %}
+            </p>
+            <a href="{{ url_for('static', filename='pdfs/Market Map - Recycling v3.pdf') }}" class="pdf-link" target="_blank">
+                {% if session.get('language', 'en') == 'zh' %}
+                    查看 PDF
+                {% else %}
+                    View PDF
+                {% endif %}
+            </a>
+            <a href="{{ url_for('static', filename='pdfs/Market Map - Recycling v3.pdf') }}" class="pdf-link" download>
+                {% if session.get('language', 'en') == 'zh' %}
+                    下载 PDF
+                {% else %}
+                    Download PDF
+                {% endif %}
+            </a>
+        </div>
+        
+        <div class="research-item">
+            <div class="research-title-box" style="display: flex; align-items: center; margin-bottom: 0.5em;">
+                <span style="font-size: 1.1em;">
+                {% if session.get('language', 'en') == 'zh' %}
+                    市场地图 2: 核聚变能源
+                {% else %}
+                    Market Map 2: Nuclear Fusion
+                {% endif %}
+                </span>
+            </div>
+            <p>
+                {% if session.get('language', 'en') == 'zh' %}
+                    这份市场地图详细分析了核聚变能源领域，包括关键研究机构、创业公司和投资趋势。核聚变作为一种潜在的无限清洁能源，代表了能源行业的未来。
+                {% else %}
+                    This market map provides a detailed analysis of the nuclear fusion energy sector, including key research institutions, startups, and investment trends. Fusion energy, as a potentially limitless clean energy source, represents the future of the energy industry.
+                {% endif %}
+            </p>
+            <a href="{{ url_for('static', filename='pdfs/Market Map - Fusion Energy v1.pdf') }}" class="pdf-link" target="_blank">
+                {% if session.get('language', 'en') == 'zh' %}
+                    查看 PDF
+                {% else %}
+                    View PDF
+                {% endif %}
+            </a>
+            <a href="{{ url_for('static', filename='pdfs/Market Map - Fusion Energy v1.pdf') }}" class="pdf-link" download>
+                {% if session.get('language', 'en') == 'zh' %}
+                    下载 PDF
+                {% else %}
+                    Download PDF
+                {% endif %}
+            </a>
+        </div>
+    </section>
+</div>
+{% endblock %} 

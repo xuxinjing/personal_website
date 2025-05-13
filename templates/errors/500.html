@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if session.get('language', 'en') == 'zh' %}
+    500 - 服务器错误
+{% else %}
+    500 - Server Error
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="error-page">
+        <h1>500</h1>
+        
+        <p>
+            {% if session.get('language', 'en') == 'zh' %}
+                抱歉，服务器出现了错误。
+            {% else %}
+                Sorry, something went wrong on our server.
+            {% endif %}
+        </p>
+        
+        <div class="back-link">
+            <a href="{{ url_for('index') }}">
+                {% if session.get('language', 'en') == 'zh' %}
+                    返回主页
+                {% else %}
+                    Return to Home
+                {% endif %}
+            </a>
+        </div>
+    </section>
+</div>
+
+<style>
+    .error-page {
+        text-align: center;
+        margin: 100px auto;
+    }
+    
+    .error-page h1 {
+        font-size: 120px;
+        margin-bottom: 20px;
+        font-weight: lighter;
+    }
+    
+    .error-page p {
+        font-size: 1.2rem;
+        margin-bottom: 40px;
+    }
+    
+    .back-link {
+        margin-top: 40px;
+    }
+    
+    .back-link a {
+        display: inline-block;
+        padding: 10px 20px;
+        border: 1px solid #000;
+        text-decoration: none;
+        color: #000;
+        transition: all 0.3s ease;
+    }
+    
+    .back-link a:hover {
+        background-color: #000;
+        color: #fff;
+    }
+</style>
+{% endblock %} 

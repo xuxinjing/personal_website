@@ -1,0 +1,67 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{% if session.get('language', 'en') == 'zh' %}
+    思考 1: 关于现代技术
+{% else %}
+    Thought 1: On Modern Technology
+{% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="thought-content">
+    <h1>
+        {% if session.get('language', 'en') == 'zh' %}
+            思考 1: 关于现代技术
+        {% else %}
+            Thought 1: On Modern Technology
+        {% endif %}
+    </h1>
+    
+    <div class="thought-date">
+        {% if session.get('language', 'en') == 'zh' %}
+            发布于: 2025年3月15日
+        {% else %}
+            Published: March 15, 2025
+        {% endif %}
+    </div>
+    
+    <div class="thought-body">
+        {% if session.get('language', 'en') == 'zh' %}
+            <p>在这个数字时代，技术已经成为我们日常生活不可分割的一部分。从智能手机到人工智能，我们被各种各样的创新所包围。这些技术为我们带来了前所未有的便利，但同时也引发了一系列关于隐私、依赖性和社会价值观的问题。</p>
+            
+            <p>现代技术提供了无数的好处。全球互联使人们能够即时交流，无论距离多远。医疗技术的进步挽救了无数生命，并改善了生活质量。信息的民主化让知识变得触手可及，使学习变得前所未有的简单。创新的速度令人惊叹，几乎每天都有新的应用程序、设备或解决方案出现，解决我们之前认为不可能解决的问题。</p>
+            
+            <p>然而，这些益处也伴随着代价。我们的个人数据被收集和分析，导致隐私担忧。社交媒体和智能手机带来了沉迷和依赖的问题。虚拟互动往往取代了面对面的连接，影响了我们建立深层关系的能力。自动化威胁着某些工作领域，引发了关于未来工作性质的问题。</p>
+            
+            <p>在面对这些挑战时，平衡是关键。我们需要接受创新带来的好处，同时制定标准来引导技术发展的道德方向。教育应该包括数字素养和批判性思维，以帮助人们明智地导航数字世界。法规可以保护隐私，同时不会阻碍有益的创新。</p>
+            
+            <p>最重要的是，我们应该记住技术是一种工具，而不是目的。真正的目标应该是创造一个技术增强而不是主导的世界。通过有意识地与我们的设备和平台互动，我们可以享受技术提供的便利，同时保持对我们人性的尊重。</p>
+            
+            <p>在我们继续在这个不断发展的技术景观中前进时，让我们努力找到使用技术的健康方式，使我们的生活得到改善，同时保持我们与他人和周围世界的联系。</p>
+        {% else %}
+            <p>In this digital age, technology has become an inseparable part of our daily lives. From smartphones to artificial intelligence, we are surrounded by a multitude of innovations. These technologies have brought unprecedented convenience, but they have also raised a series of questions about privacy, dependency, and social values.</p>
+            
+            <p>Modern technology offers countless benefits. Global connectivity allows people to communicate instantly, regardless of distance. Advances in medical technology have saved countless lives and improved quality of life. The democratization of information has made knowledge accessible and learning easier than ever before. The pace of innovation is astounding, with new applications, devices, or solutions emerging almost daily to solve problems we previously thought impossible to address.</p>
+            
+            <p>However, these benefits come with costs. Our personal data is collected and analyzed, leading to privacy concerns. Social media and smartphones have brought issues of addiction and dependency. Virtual interactions often replace face-to-face connections, affecting our ability to build deep relationships. Automation threatens certain job sectors, raising questions about the future nature of work.</p>
+            
+            <p>In facing these challenges, balance is key. We need to embrace the benefits of innovation while establishing standards to guide the ethical direction of technological development. Education should include digital literacy and critical thinking to help people navigate the digital world wisely. Regulations can protect privacy without hindering beneficial innovation.</p>
+            
+            <p>Most importantly, we should remember that technology is a tool, not an end in itself. The real goal should be to create a world where technology enhances rather than dominates. By consciously engaging with our devices and platforms, we can enjoy the conveniences technology offers while maintaining respect for our humanity.</p>
+            
+            <p>As we continue to move forward in this ever-evolving technological landscape, let's strive to find healthy ways to use technology that improve our lives while maintaining our connections to each other and the world around us.</p>
+        {% endif %}
+    </div>
+    
+    <div class="back-link">
+        <a href="{{ url_for('thoughts') }}">
+            {% if session.get('language', 'en') == 'zh' %}
+                ← 返回到所有思考
+            {% else %}
+                ← Back to All Thoughts
+            {% endif %}
+        </a>
+    </div>
+</div>
+{% endblock %} 
