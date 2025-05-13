@@ -87,6 +87,10 @@ def download_file(filename):
         logger.exception(f"Error downloading file: {filename}, error: {str(e)}")
         abort(404)
 
+@app.route('/static/<path:filename>')
+def static_files(filename):
+    return send_from_directory('static', filename)
+
 @app.errorhandler(404)
 def page_not_found(e):
     return render_template('errors/404.html'), 404
