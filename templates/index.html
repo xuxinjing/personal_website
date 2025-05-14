@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block title %}main{% endblock %}
+
+{% block content %}
+<div class="container">
+    <section class="profile">
+        <div class="avatar-container">
+            <img src="{% if on_vercel %}/images/profile/avatar.jpg{% else %}/static/images/profile/avatar.jpg{% endif %}" alt="Profile Picture" class="profile-avatar">
+        </div>
+        <h1>
+            {% if session.get('language', 'en') == 'zh' %}
+                你好，我是许鑫靖
+            {% else %}
+                Hello, I'm Xinjing Xu
+            {% endif %}
+        </h1>
+        
+        {% if session.get('language', 'en') != 'zh' %}
+        <p class="pronunciation">
+            <a href="#" id="pronunciation-link">pronunciation</a>
+        </p>
+        <p class="pronunciation-text" id="pronunciation-text" style="display: none; font-style: italic;">
+            X sounds like "SH", so it sounds like "Shin-Jing Shü", where "ü" sounds like the u umlaut in German
+        </p>
+        {% endif %}
+        
+        <p class="subtitle">
+            {% if session.get('language', 'en') == 'zh' %}
+                化学工程师 | Builder
+            {% else %}
+                Chemical Engineer | Builder
+            {% endif %}
+        </p>
+    </section>
+
+    <section class="about">
+        <h2>
+            {% if session.get('language', 'en') == 'zh' %}
+                关于我
+            {% else %}
+                About Me
+            {% endif %}
+        </h2>
+        <p>
+            {% if session.get('language', 'en') == 'zh' %}
+                目标一：学习在学校没学到的知识，构建在工作中没有机会构建的项目。
+                <br><br>
+                目标二：全力以赴创造可持续的未来，实现梦想。
+                <br><br>
+                目标三：偶尔写写关于生活和工作的感悟，因为这些终究是我们人性的基石。
+            {% else %}
+                OBJECTIVE 1: Learning what I didn't learn in school, building what I don't build at work. 
+                <br><br>
+                OBJECTIVE 2: Going all in on creating a sustainable future and making dreams come true.
+                <br><br>
+                OBJECTIVE 3: Writing (occasionally) about my epiphanies about life and work because they are, afterall, the cornerstones of our humanness.
+            {% endif %}
+        </p>
+    </section>
+</div>
+{% endblock %} 

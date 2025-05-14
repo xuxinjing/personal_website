@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Personal Website{% endblock %}</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <header style="display: flex; justify-content: space-between; align-items: center;">
+        <nav>
+            <a href="{{ url_for('index') }}">Home</a> |
+            <a href="{{ url_for('research') }}">Research</a> |
+            <a href="{{ url_for('thoughts') }}">Thoughts</a> |
+            <a href="https://www.instagram.com/luke_xxj/" target="_blank" rel="noopener">Art</a>
+        </nav>
+        <div class="language-switcher" style="text-align: right;">
+            <a href="{{ url_for('set_language', language='en') }}" class="{% if session.get('language', 'en') == 'en' %}active{% endif %}">EN</a>
+            <span class="separator">|</span>
+            <a href="{{ url_for('set_language', language='zh') }}" class="{% if session.get('language', 'en') == 'zh' %}active{% endif %}">
+                ZH
+            </a>
+        </div>
+    </header>
+    <hr>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    
+<footer>
+    <div class="social-links">
+        <a href="https://www.linkedin.com/in/xxj/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+        <a href="https://x.com/XINJINGXU7" target="_blank" aria-label="X"><i class="fa-brands fa-x-twitter"></i></a>
+        <a href="https://www.instagram.com/luke_xxj/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+    </div>
+    <p>© {{ current_year }} All Rights Reserved</p>
+</footer>
+
+<script src="/js/main.js"></script>
+</body>
+</html> 

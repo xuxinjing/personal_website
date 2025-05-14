@@ -11,16 +11,16 @@ logging.basicConfig(
 )
 logger = logging.getLogger(__name__)
 
-app = Flask(__name__, template_folder='.')
+app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'your-secret-key'
 app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 # Create a directory for PDFs if it doesn't exist
-os.makedirs('static/pdfs', exist_ok=True)
+os.makedirs('public/pdfs', exist_ok=True)
 
 # Create a directory for artwork if it doesn't exist
-os.makedirs('static/images/artwork', exist_ok=True)
+os.makedirs('public/images/artwork', exist_ok=True)
 
 def get_locale():
     if 'language' in session:
@@ -31,7 +31,10 @@ babel = Babel(app, locale_selector=get_locale)
 
 @app.context_processor
 def inject_now():
-    return {'current_year': datetime.datetime.now().year}
+    return {
+        'current_year': datetime.datetime.now().year,
+        'on_vercel': os.environ.get('VERCEL', False)
+    }
 
 @app.route('/')
 def index():
@@ -52,16 +55,11 @@ def thought_detail(thought_id):
         if not thought_id.isalnum() and not thought_id.replace('-', '').isalnum():
             logger.warning(f"Invalid thought_id requested: {thought_id}")
             abort(404)
-            
         template_path = f'thoughts/{thought_id}.html'
         return render_template(template_path)
     except:
         logger.exception(f"Error rendering thought: {thought_id}")
         abort(404)
-
-@app.route('/art')
-def art():
-    return render_template('art.html')
 
 @app.route('/dont_click')
 def dont_click():
@@ -82,14 +80,14 @@ def download_file(filename):
             abort(404)
         # Use send_from_directory with safe handling of filenames with spaces
         logger.info(f"Attempting to download file: {filename}")
-        return send_from_directory('static/pdfs', filename, as_attachment=True)
+        return send_from_directory('public/pdfs', filename, as_attachment=True)
     except Exception as e:
         logger.exception(f"Error downloading file: {filename}, error: {str(e)}")
         abort(404)
 
 @app.route('/static/<path:filename>')
 def static_files(filename):
-    return send_from_directory('static', filename)
+    return send_from_directory('public', filename)
 
 @app.errorhandler(404)
 def page_not_found(e):
