@@ -6,7 +6,7 @@
 <div class="container">
     <section class="profile">
         <div class="avatar-container">
-            <img src="{% if on_vercel %}/images/profile/avatar.jpg{% else %}/static/images/profile/avatar.jpg{% endif %}" alt="Profile Picture" class="profile-avatar">
+            <img src="/static/images/profile/avatar.jpg" alt="Profile Picture" class="profile-avatar">
         </div>
         <h1>
             {% if session.get('language', 'en') == 'zh' %}

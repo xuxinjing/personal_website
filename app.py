@@ -2,14 +2,6 @@ from flask import Flask, render_template, request, session, redirect, url_for, s
 from flask_babel import Babel
 import datetime
 import os
-import logging
-
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
 
 app = Flask(__name__, template_folder='templates')
 app.config['SECRET_KEY'] = 'your-secret-key'
@@ -17,10 +9,10 @@ app.config['BABEL_DEFAULT_LOCALE'] = 'en'
 app.config['BABEL_TRANSLATION_DIRECTORIES'] = 'translations'
 
 # Create a directory for PDFs if it doesn't exist
-os.makedirs('public/pdfs', exist_ok=True)
+os.makedirs('static/pdfs', exist_ok=True)
 
 # Create a directory for artwork if it doesn't exist
-os.makedirs('public/images/artwork', exist_ok=True)
+os.makedirs('static/images/artwork', exist_ok=True)
 
 def get_locale():
     if 'language' in session:
@@ -33,7 +25,6 @@ babel = Babel(app, locale_selector=get_locale)
 def inject_now():
     return {
         'current_year': datetime.datetime.now().year,
-        'on_vercel': os.environ.get('VERCEL', False)
     }
 
 @app.route('/')
@@ -53,12 +44,10 @@ def thought_detail(thought_id):
     try:
         # Validate thought_id to prevent directory traversal
         if not thought_id.isalnum() and not thought_id.replace('-', '').isalnum():
-            logger.warning(f"Invalid thought_id requested: {thought_id}")
             abort(404)
         template_path = f'thoughts/{thought_id}.html'
         return render_template(template_path)
     except:
-        logger.exception(f"Error rendering thought: {thought_id}")
         abort(404)
 
 @app.route('/dont_click')
@@ -79,15 +68,13 @@ def download_file(filename):
         if '..' in filename or filename.startswith('/'):
             abort(404)
         # Use send_from_directory with safe handling of filenames with spaces
-        logger.info(f"Attempting to download file: {filename}")
-        return send_from_directory('public/pdfs', filename, as_attachment=True)
+        return send_from_directory('static/pdfs', filename, as_attachment=True)
     except Exception as e:
-        logger.exception(f"Error downloading file: {filename}, error: {str(e)}")
         abort(404)
 
 @app.route('/static/<path:filename>')
 def static_files(filename):
-    return send_from_directory('public', filename)
+    return send_from_directory('static', filename)
 
 @app.errorhandler(404)
 def page_not_found(e):
@@ -98,5 +85,4 @@ def server_error(e):
     return render_template('errors/500.html'), 500
 
 if __name__ == '__main__':
-    logger.info("Starting Personal Website on port 5004")
     app.run(debug=True, port=5004) 
