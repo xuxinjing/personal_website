@@ -13,7 +13,8 @@
             <a href="{{ url_for('index') }}">Home</a> |
             <a href="{{ url_for('research') }}">Research</a> |
             <a href="{{ url_for('thoughts') }}">Thoughts</a> |
-            <a href="https://www.instagram.com/luke_xxj/" target="_blank" rel="noopener">Art</a>
+            <a href="https://www.instagram.com/luke_xxj/" target="_blank" rel="noopener">Art</a> |
+            <a href="https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank" rel="noopener">Don't Click</a>
         </nav>
         <div class="language-switcher" style="text-align: right;">
             <a href="{{ url_for('set_language', language='en') }}" class="{% if session.get('language', 'en') == 'en' %}active{% endif %}">EN</a>

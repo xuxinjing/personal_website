@@ -425,4 +425,14 @@ section {
         max-width: 95%;
         max-height: 95%;
     }
+}
+
+a, a:visited {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.2s;
+}
+a:hover, a.active {
+    color: #111;
+    text-decoration: underline;
 } 
