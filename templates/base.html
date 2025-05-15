@@ -11,7 +11,7 @@
     <header style="display: flex; justify-content: space-between; align-items: center;">
         <nav>
             <a href="{{ url_for('index') }}">Home</a> |
-            <a href="{{ url_for('research') }}">Research</a> |
+            <a href="{{ url_for('climate_tech') }}">{% if session.get('language', 'en') == 'zh' %}气候科技{% else %}Climate Tech{% endif %}</a> |
             <a href="{{ url_for('thoughts') }}">Thoughts</a> |
             <a href="https://www.instagram.com/luke_xxj/" target="_blank" rel="noopener">Art</a> |
             <a href="https://waitbutwhy.com/2015/01/artificial-intelligence-revolution-1.html" target="_blank" rel="noopener">Don't Click</a>

@@ -31,9 +31,9 @@ def inject_now():
 def index():
     return render_template('index.html')
 
-@app.route('/research')
-def research():
-    return render_template('research.html')
+@app.route('/climate_tech')
+def climate_tech():
+    return render_template('climate_tech.html')
 
 @app.route('/thoughts')
 def thoughts():
